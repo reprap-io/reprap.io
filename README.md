@@ -51,7 +51,7 @@ __Backend:__
 
 __Frontend:__
 
-  *Display & browse all data returned directly from GitHub
+  *Display & browse all data returned directly from GitHub similar to http://stl.garden
   
   
   
