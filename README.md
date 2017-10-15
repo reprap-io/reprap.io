@@ -1,5 +1,5 @@
 # reprap.io
-An open source tool for effectively sharing and browsing of 3D printable objects 
+An open source tool for effectively sharing and browsing 3D printable objects 
 
 # Goals
   *GitHub based
