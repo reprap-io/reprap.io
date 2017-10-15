@@ -10,11 +10,15 @@ An open source tool for effectively sharing and browsing of 3D printable objects
 
 
 # Roadmap
+
+
 __Specification for 'reprap.io' file:__
 
   *It's a blank file
   
   *Used to detect a repository to display on reprap.io
+
+
 
 
 __Specification for 'reprap.io' 3D object GitHub repository:__
@@ -35,13 +39,19 @@ __Specification for 'reprap.io' 3D object GitHub repository:__
    
    
 
+
+
 __Backend:__
 
   *Go application using GitHub Search API to retrieve all repositories containing reprap.io file
 
 
+
+
 __Frontend:__
 
   *Display & browse all data returned directly from GitHub
+  
+  
   
   
