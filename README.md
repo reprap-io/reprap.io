@@ -12,7 +12,7 @@ Clean, modern UI
 # Roadmap
 Specification for 'reprap.io' file:
 
-  -A blank file
+  -It's a blank file
   
   -Used to detect a repository to display on reprap.io
 
@@ -23,11 +23,11 @@ Specification for 'reprap.io' 3D object GitHub repository:
   
   -Recommended files/folders structure:
   
-    -documentation
+    /documentation
     
-    -stls
+    /stls
     
-    -source
+    /source
     
     readme.md
     
