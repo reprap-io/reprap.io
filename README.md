@@ -19,6 +19,7 @@ __Specification for 'reprap.io' file:__
   *Used to detect a repository to display on reprap.io
 
 
+---
 
 
 __Specification for 'reprap.io' 3D object GitHub repository:__
@@ -38,7 +39,7 @@ __Specification for 'reprap.io' 3D object GitHub repository:__
     reprap.io
    
    
-
+---
 
 
 __Backend:__
@@ -46,7 +47,7 @@ __Backend:__
   *Go application using GitHub Search API to retrieve all repositories containing reprap.io file
 
 
-
+---
 
 __Frontend:__
 
