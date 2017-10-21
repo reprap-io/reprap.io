@@ -14,9 +14,11 @@ An open source tool for effectively sharing and browsing 3D printable objects
 
 __Specification for 'reprap.io' file:__
 
-  *It's a blank file
+  *YAML file containing reprap.io generated GUID
   
   *Used to detect a repository to display on reprap.io
+  
+  *Used to determine how to display a repository on reprap.io
 
 
 ---
@@ -28,23 +30,23 @@ __Specification for 'reprap.io' 3D object GitHub repository:__
   
   *Recommended files/folders structure:
   
-    /documentation
-    
-    /stls
-    
-    /source
+    /doc
+        
+    /src
     
     readme.md
     
     reprap.io
    
+  
    
 ---
 
 
 __Backend:__
 
-  *Go application using GitHub Search API to retrieve all repositories containing reprap.io file
+  *Go application using GitHub Search API to retrieve all repositories containing reprap.io file and display information from them
+ 
 
 
 ---
@@ -53,6 +55,9 @@ __Frontend:__
 
   *Display & browse all data returned directly from GitHub similar to http://stl.garden
   
+  *Display the repo files directly
+  
+  *MAYBE parse various types of files from repo -- stl/stp/fusion360 and organize into make and source views automatically
   
   
   
