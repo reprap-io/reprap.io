@@ -46,6 +46,14 @@ __Specification for 'reprap.io' 3D object GitHub repository:__
 __Backend:__
 
   *Go application using GitHub Search API to retrieve all repositories containing reprap.io file and display information from them
+  
+  */new
+  Outputs a new reprap.io YAML file containing a GUID.  We write the GUID to the database so we can find it on GitHub after it
+  has been committed.
+  
+  */scan
+  Periodically look at GitHub for reprap.io files we have generated, using the GUID to find them.
+  When one is found, record it to the 'alive' repositories table.
  
 
 
