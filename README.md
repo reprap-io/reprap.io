@@ -46,6 +46,8 @@ __Specification for 'reprap.io' 3D object GitHub repository:__
 __Backend:__
 
   *Go application using GitHub Search API to retrieve all repositories containing reprap.io file and display information from them
+  */list
+  Retrieves pages of repositories with reprap
   
   */new
   Outputs a new reprap.io YAML file containing a GUID.  We write the GUID to the database so we can find it on GitHub after it
@@ -61,9 +63,9 @@ __Backend:__
 
 __Frontend:__
 
-  *Display & browse all data returned directly from GitHub similar to http://stl.garden
-  
-  *Display the repo files directly
+  *Display & browse data returned directly from GitHub similar to http://stl.garden
+  *Plus GitHub search similar to http://olegsmetanin.github.io/react_react-router_flummox_example/#/search/golang
+ 
   
   *MAYBE parse various types of files from repo -- stl/stp/fusion360 and organize into make and source views automatically
   
