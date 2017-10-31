@@ -4,7 +4,7 @@ To start:
 
 Ensure node and npm are installed, then:
 
-```git clone ```
+```git clone https://github.com/reprap-io/reprap.io.git ```
 
 
 ```npm start```
