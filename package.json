@@ -1,0 +1,25 @@
+{
+  "name": "reprapio",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.14",
+    "react-three-renderer": "^3.2.1",
+    "semantic-ui-react": "^0.75.1",
+    "three": "^0.87.1",
+    "three-stl-loader": "^1.0.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "semantic-ui": "^2.2.13"
+  }
+}
