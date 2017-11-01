@@ -10,7 +10,7 @@
     "react-scripts": "1.0.14",
     "react-three-renderer": "^3.2.1",
     "semantic-ui-react": "^0.75.1",
-    "three": "^0.87.1",
+    "stl-viewer": "git+https://github.com/chiedolabs/react-stl-viewer.git",
     "three-stl-loader": "^1.0.6"
   },
   "scripts": {
