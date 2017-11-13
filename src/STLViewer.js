@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM  from 'react-dom';
-import THREE from './Three';
+import THREE from 'three';
 import PropTypes from 'prop-types';
 
 let OrbitControls = require('three-orbit-controls')(THREE);
