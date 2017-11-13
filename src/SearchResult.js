@@ -12,10 +12,10 @@ class SearchResult extends Component {
 		this.state = {
 			stl_files: [] //a list of stl files we find in a repository
 		};
-}
+	}
 
 	componentDidMount() {
-	let tree_url = this.props.trees_url.replace('{/sha}',''); //The tree URL property ends with {/sha}, trim it off
+	let tree_url = this.props.trees_url.replace('{/sha}',''); //the tree URL property ends with {/sha}, trim it off
 	let download_url = "https://raw.githubusercontent.com/" + this.props.full_name + "/master/" //build the URL by hand, save the call to contents API
 
 	//first we call GitHub's tree API endpoint to recursively fetch the tree and gather all STL files in the repository
@@ -26,11 +26,11 @@ class SearchResult extends Component {
 	.then( json => { 
 		let stl_files = json.tree.map( (file) => { //loop (map) over the resulting files in the tree
 
-			var file_extension = file.path.slice((file.path.lastIndexOf(".") - 1 >>> 0) + 2); //extract file extension
+			var file_extension = file.path.slice((file.path.lastIndexOf(".") - 1 >>> 0) + 2); //get the file extension
 			var match = file_extension.match(/stl/i); //case insensitive match on 'stl'
 
 			if(match && file.type == "blob"){ //if it's an stl file
-						//add the stl file path we found to our list of stls
+						// return a scene rendered by threeJS to display the STL file
 						return(
 									<div>
 										<Scene url={download_url + file.path} /> { download_url + file.path }
@@ -39,13 +39,12 @@ class SearchResult extends Component {
 					}
 		})
 
-	this.setState({stl_files: stl_files})
-
-  //remove the undefined elements
+  //remove the undefined elements from the array of STL files we found
 	var temp = [];
-		for(let i of this.state.stl_files)
+		for(let i of stl_files)
 		i && temp.push(i); // copy each non-empty value to the 'temp' array
-		this.state.stl_files = temp;
+		stl_files = temp;
+		this.setState({stl_files: stl_files})
 		//delete temp; // discard the variable doesn't work
 		});
 	}
