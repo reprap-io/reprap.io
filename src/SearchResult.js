@@ -6,55 +6,69 @@ import Scene from './Scene'
 
 
 
-
 class SearchResult extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			results: []
+			results: [],
+			stl_files: [] //a list of stl files we find in a repository
 		};
 }
 
 	componentDidMount() {
 	let tree_url = this.props.trees_url.replace('{/sha}',''); //The tree URL property ends with {/sha}, trim it off
+	let contents_url = this.props.contents_url.replace('{+path}',''); //The contents URL
 
-	fetch( tree_url + "/master?recursive=1")
+	//first we recursively fetch the tree and gather all STL files in the repo
+	fetch( tree_url + "/master?recursive=1") //we only consider the master branch
 	.then( response => {
 		if (!response.ok) throw Error('Response not ok')
 		return response.json();})
 	.then( json => { 
-		let results = json.tree.map( (file) => {
-						
-			var file_extension = file.path.slice((file.path.lastIndexOf(".") - 1 >>> 0) + 2); //get file extension
-			var match = file_extension.match(/stl/i); //case insensitive match on file extension for STL
+		let stl_files = json.tree.map( (file) => { //loop (map) over the resulting files in the tree
+			var file_extension = file.path.slice((file.path.lastIndexOf(".") - 1 >>> 0) + 2); //extract file extension
+			var match = file_extension.match(/stl/i); //case insensitive match on 'stl'
 
-			if(match && file.type == "blob"){
-						let embed_3d = "https://embed.github.com/view/3d/" + this.props.full_name + "/master/" + file.path
-						const script = document.createElement("script");
-						script.type = 'text/javascript';
-						script.src = embed_3d
-						document.body.appendChild(script);
+			if(match && file.type == "blob"){ //if it's an stl file
+						//add the stl file path we found to our list of stls
+						return( file.path )
+					}
 
+		})
+		this.setState({stl_files: stl_files})
 
-						script.async = true;
-	
-						console.log("json", file)
+    //remove the undefined elements
+	  var temp = [];
+		for(let i of this.state.stl_files)
+    i && temp.push(i); // copy each non-empty value to the 'temp' array
+		this.state.stl_files = temp;
+		//delete temp; // discard the variable doesn't work
+
+		console.log(this.state.stl_files)
+
+		let scene_markup = this.state.stl_files.map( (file) => {
+			let url_to_fetch = contents_url + file
+			fetch( url_to_fetch )
+			.then( response => {
+					if (!response.ok) console.log('Response not ok')
+					return response.json();})
+			.then( json => { 
 							return( 
 										<div>	
-											<Scene /> { file.path }
+											<Scene url = { json.download_url }/>
 										</div>
-							
 							)
 
+							})
 
-						}
+		});	
 
-							//console.log("wew lads", file.path.split('.').pop())
-		})
-
-		this.setState({results : results})
 		});
+
+		//now we have a list of STL files in the repository, let's retrieve their download url
+		//this only works for files <4.5MB, a 403 is returned and the request is rejected when files are over the limit
+		
 	}
 
 

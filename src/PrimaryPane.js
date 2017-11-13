@@ -36,6 +36,7 @@ class PrimaryPane extends Component {
 							<SearchResult 
 
 								name={search_result.name} 
+							  contents_url = {search_result.contents_url}
 								full_name = {search_result.full_name}
 								description={search_result.description} 
 								owner={ search_result.owner.login }
