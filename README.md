@@ -1,15 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
 To start:
-
 Ensure node and npm are installed, then:
 
 ```git clone https://github.com/reprap-io/reprap.io.git ```
-
-
+```cd reprap.io```
+```npm install```
 ```npm start```
 
-Browse to http://localhost:3000
+Navigate to http://localhost:3000 in your browser
 
 
 # reprap.io
@@ -31,11 +28,8 @@ All repositories tagged 'reprapio' will display on reprap.io
 
 __Specification for 'reprap.io' file:__
 
-  *YAML file containing reprap.io generated GUID
+  *YAML file containing information about what and how to display information about a 3D object on reprap.io
     
-  *Used to determine how to display a repository on reprap.io
-
-
 ---
 
 
