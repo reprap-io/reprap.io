@@ -1,16 +1,20 @@
+# reprap.io
+An open source tool for effectively sharing and browsing 3D printable objects 
+
+
 To start:
 Ensure node and npm are installed, then:
 
 ```git clone https://github.com/reprap-io/reprap.io.git ```
+
 ```cd reprap.io```
+
 ```npm install```
+
 ```npm start```
 
 Navigate to http://localhost:3000 in your browser
 
-
-# reprap.io
-An open source tool for effectively sharing and browsing 3D printable objects 
 
 # Goals
   *GitHub based
