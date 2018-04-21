@@ -20,13 +20,13 @@ class SearchResults extends Component {
 		super(props);
 		this.state = {
 			results: [],
-			loading: true
+			loading: true,
 		};
 }
 
-	componentDidMount(props) {
-	fetch("https://api.github.com/search/repositories?q=" + this.props.match.params.query + "+topic:reprapio&sort=updated")
 
+        searchreprapio(query) {
+	fetch("https://api.github.com/search/repositories?q=" + query + "+topic:reprapio")
 	.then( response => {
 		if (!response.ok) throw Error('Response not ok')
 		return response.json();})
@@ -38,11 +38,15 @@ class SearchResults extends Component {
 
 								name={search_result.name} 
 								contents_url = {search_result.contents_url}
+								html_url = {search_result.html_url}
 								full_name = {search_result.full_name}
 								description={search_result.description} 
 								owner={ search_result.owner.login }
 								trees_url={ search_result.trees_url }
 								stars = { search_result.stargazers_count }
+								license = { search_result.license }
+								created_at = { search_result.created_at }
+								updated_at  = { search_result.updated_at }
 							
 							/>
 			)
@@ -50,15 +54,28 @@ class SearchResults extends Component {
 
 		this.setState({results : results})
 		this.setState({loading: false})
+
+		console.log("QUERY:   " + this.props.match.params.query)
 		});
+	}
+
+
+
+	componentDidMount(props) {
+		this.searchreprapio(this.props.match.params.query)
+	}
+
+	handleQuery() {
+		this.searchreprapio(this.props.match.params.query)
 	}
 
 	render() {
 		return (
 			<div>
 				<Divider hidden />
-						{ this.state.results }
-			{ this.state.loading ? <LoadingMessage /> : null }
+
+					{ this.state.results }
+					{ this.state.loading ? <LoadingMessage /> : null }
 			</div>
 		);
 	}

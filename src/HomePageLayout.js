@@ -26,9 +26,6 @@ import Popular from './Popular'
 
 
 /* eslint-disable react/no-multi-comp */
-/* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
- * such things.
- */
 const HomepageHeading = ({ mobile }) => (
   <Container text>
     <Header
@@ -52,7 +49,7 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? '0.5em' : '0.5em',
       }}
     />
-	<SearchForm />
+	<SearchForm handleSearch='' />
   </Container>
 )
 
@@ -60,10 +57,6 @@ HomepageHeading.propTypes = {
   mobile: PropTypes.bool,
 }
 
-/* Heads up!
- * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
- * It can be more complicated, but you can create really flexible markup.
- */
 class DesktopContainer extends Component {
   state = {}
 
@@ -77,7 +70,7 @@ class DesktopContainer extends Component {
     return (
       <Responsive {...Responsive.onlyComputer}>
         <Visibility once={false} onBottomPassed={this.showFixedMenu} onBottomPassedReverse={this.hideFixedMenu}>
-          <Segment inverted textAlign='center' style={{ minHeight: 350, padding: '1em 0em', backgroundImage: 'url(' + 'https://www.desktopbackground.org/download/o/2014/07/20/796528_3d-geometric-abstract-shapes-dark-backgrounds_1920x1080_h.jpg' + ')', backgroundSize: 'cover' }} vertical>
+          <Segment inverted textAlign='center' style={{ minHeight: 350, padding: '1em 0em', backgroundImage: 'url(' + 'http://sf.co.ua/15/06/wallpaper-12d3fe.jpg' + ')', backgroundSize: 'cover' }} vertical>
             <Menu
               fixed={fixed ? 'top' : null}
               inverted={!fixed}
@@ -136,7 +129,7 @@ class MobileContainer extends Component {
           </Sidebar>
 
           <Sidebar.Pusher dimmed={sidebarOpened} onClick={this.handlePusherClick} style={{ minHeight: '100vh' }}>
-            <Segment inverted textAlign='center' style={{ minHeight: 350, padding: '1em 0em', backgroundImage: 'url(' + 'https://www.desktopbackground.org/download/o/2014/07/20/796528_3d-geometric-abstract-shapes-dark-backgrounds_1920x1080_h.jpg' + ')', backgroundSize: 'cover'}} vertical>
+            <Segment inverted textAlign='center' style={{ minHeight: 350, padding: '1em 0em', backgroundImage: 'url(' + 'http://sf.co.ua/15/06/wallpaper-12d3fe.jpg' + ')', backgroundSize: 'cover'}} vertical>
               <Container>
                 <Menu inverted pointing secondary size='large'>
                   <Menu.Item onClick={this.handleToggle}>

@@ -24,7 +24,7 @@ class SearchForm extends Component {
 
   handleSubmit(event) {
     /*alert('A name was submitted: ' + this.state.value);*/
-    this.props.history.push('/search/' + this.state.value);
+    this.props.history.replace('/search/' + this.state.value);
     event.preventDefault();
   }
 
@@ -32,7 +32,7 @@ class SearchForm extends Component {
    render() {
     return (
 	<Form onSubmit={this.handleSubmit}>
-	  <Input
+	  <Input fluid
 	    icon={<Icon name='search' onClick={this.handleSubmit} inverted circular link />}
 			size='massive'
 	    		placeholder='Search...'

@@ -38,12 +38,15 @@ class RecentlyUpdated extends Component {
 
 								name={search_result.name} 
 							  contents_url = {search_result.contents_url}
+								html_url = {search_result.html_url}
 								full_name = {search_result.full_name}
 								description={search_result.description} 
 								owner={ search_result.owner.login }
 								trees_url={ search_result.trees_url }
 								stars = { search_result.stargazers_count }
-								updated_at = { search_result.updated_at }
+								license = { search_result.license }
+				 				created_at = { search_result.created_at }
+								updated_at  = { search_result.updated_at }
 							
 							/>
 			)

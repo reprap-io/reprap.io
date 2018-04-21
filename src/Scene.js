@@ -8,10 +8,10 @@ class Scene extends Component {
 			      	<div>
 			      		<STLViewer
 			      		url= { this.props.url }
-			      		width={400}
-			      		height={400}
+			      		width={200}
+			      		height={200}
 			      		modelColor='#B92C2C'
-			      		backgroundColor='#EAEAEA'
+			      		backgroundColor='#FFFFFF'
 			      		/>
 			      	</div>
 			          )

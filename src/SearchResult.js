@@ -3,6 +3,8 @@ import {
   Button, Container, Grid, Header, Icon, Image, Item, Label, Menu, Segment, Step, Table,
 } from 'semantic-ui-react'
 import Scene from './Scene'
+import PrimaryDropdown from './PrimaryDropdown'
+import TimeAgo from 'react-timeago'
 
 
 class SearchResult extends Component {
@@ -17,6 +19,7 @@ class SearchResult extends Component {
 	componentDidMount() {
 	let tree_url = this.props.trees_url.replace('{/sha}',''); //the tree URL property ends with {/sha}, trim it off
 	let download_url = "https://raw.githubusercontent.com/" + this.props.full_name + "/master/" //build the URL manually to avoid making the call to contents API
+	let html_url = this.props.html_url
 
 	//first we call GitHub's tree API endpoint to recursively fetch the tree and gather all STL files in the repository
 	fetch( tree_url + "/master?recursive=1") //we only consider the master branch
@@ -32,8 +35,11 @@ class SearchResult extends Component {
 			if(match && file.type == "blob"){ //if it's an stl file
 						// return a scene rendered by threeJS to display the STL file
 						return(
-									<div>
-										<Scene url={download_url + file.path} /> { download_url + file.path }
+									<div>																				
+										<Scene url={download_url + file.path} />
+										<a href={html_url + "/blob/master/" + file.path} target="_blank">
+										View on GitHub
+										</a>
 									</div>
 									)
 					}
@@ -55,24 +61,29 @@ class SearchResult extends Component {
     <Container>
       <Item.Group divided>
         <Item>
+	    <Item.Image size={ 200 }>
+	   { this.state.stl_files[0] }
+	    </Item.Image>
 	   {/*<Item.Image src='/assets/images/wireframe/image.png' /> */}
-          <Item.Content>
+          <Item.Content verticalAlign='middle'>
             <Item.Header as='a'>{ this.props.name }</Item.Header>
             <Item.Meta>
-              <span>By { this.props.owner } { this.props.updated_at }</span>
+		<span>By { this.props.owner } </span>
+
             </Item.Meta>
             <Item.Description>
 	    	{ this.props.description }
             </Item.Description>
             <Item.Extra>
-              <Button floated='right' primary>
-                Primary
-                <Icon name='right chevron' />
-              </Button>
 							  <Label>
 							    <Icon name='star' /> { this.props.stars }
 							  </Label>
-						{ this.state.stl_files }
+							  <Label>
+							    <Icon name='legal' /> { this.props.license.key }
+							  </Label>
+	    				<span> Created <TimeAgo date= { this.props.created_at } />, 
+							last updated <TimeAgo date={ this.props.updated_at } /> </span>
+						<PrimaryDropdown />
 	    { /* <Label>Limited</Label> */ }
             </Item.Extra>
           </Item.Content>

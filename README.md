@@ -26,7 +26,8 @@ Navigate to http://localhost:3000 in your browser
 
 # Roadmap
 
-__Detecting a file to display__
+__Detecting a repository to display__
+
 All repositories tagged 'reprapio' will display on reprap.io
 
 
