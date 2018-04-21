@@ -21,12 +21,14 @@ class SearchResults extends Component {
 		this.state = {
 			results: [],
 			loading: true,
+			query: this.props.query,
+			sort: this.props.sort
 		};
 }
 
 
-        searchreprapio(query) {
-	fetch("https://api.github.com/search/repositories?q=" + query + "+topic:reprapio")
+        searchreprapio(query, sort) {
+	fetch("https://api.github.com/search/repositories?q=" + query + "+topic:reprapio&sort=" + sort)
 	.then( response => {
 		if (!response.ok) throw Error('Response not ok')
 		return response.json();})
@@ -62,11 +64,7 @@ class SearchResults extends Component {
 
 
 	componentDidMount(props) {
-		this.searchreprapio(this.props.match.params.query)
-	}
-
-	handleQuery() {
-		this.searchreprapio(this.props.match.params.query)
+		this.searchreprapio(this.props.query, this.props.sort)
 	}
 
 	render() {

@@ -19,11 +19,6 @@ import {
 import SearchForm from './SearchForm'
 import SearchResults from './SearchResults'
 
-import RecentlyUpdated from './RecentlyUpdated'
-import New from './New'
-import Popular from './Popular'
-
-
 
 /* eslint-disable react/no-multi-comp */
 const HomepageHeading = ({ mobile }) => (
@@ -168,12 +163,11 @@ ResponsiveContainer.propTypes = {
 }
 
 const HomepageLayout = () => (
-		
   <ResponsiveContainer>
-     <Route exact path="/recent" component={ RecentlyUpdated } />
-     <Route exact path="/new" component={ New } />
-     <Route exact path="/popular" component={ Popular } />
-     <Route path="/search/:query" component={ SearchResults } />
+     <Route exact path="/recent" render={(props) => <SearchResults {...props} sort='updated' query='' />} />
+     <Route exact path="/new" render={(props) => <SearchResults {...props} sort='updated' query='' />} />
+     <Route exact path="/popular" render={(props) => <SearchResults {...props} sort='stars' query='' />} />
+     <Route path="/search/:query" render={(props) => <SearchResults {...props} sort='stars' query={props.match.params.query} />} />
   </ResponsiveContainer>
 )
 
