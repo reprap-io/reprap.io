@@ -67,11 +67,15 @@ class SearchResults extends Component {
 		this.searchreprapio(this.props.query, this.props.sort)
 	}
 
+	componentWillReceiveProps(nextProps) {
+	    this.searchreprapio(nextProps.match.params.query, '');
+		console.log("NEXTPROO: " + nextProps.match.params.query)
+	  }
+
 	render() {
 		return (
 			<div>
 				<Divider hidden />
-
 					{ this.state.results }
 					{ this.state.loading ? <LoadingMessage /> : null }
 			</div>
