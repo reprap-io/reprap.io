@@ -165,9 +165,9 @@ ResponsiveContainer.propTypes = {
 const HomepageLayout = () => (
   <ResponsiveContainer>
      <Route exact path="/recent" render={(props) => <SearchResults {...props} sort='updated' query='' />} />
-     <Route exact path="/new" render={(props) => <SearchResults {...props} sort='updated' query='' />} />
+     <Route exact path="/new" render={(props) => <SearchResults {...props} sort='created' query='' />} />
      <Route exact path="/popular" render={(props) => <SearchResults {...props} sort='stars' query='' />} />
-     <Route path="/search/:query" render={(props) => <SearchResults {...props} sort='stars' query={props.match.params.query} />} />
+     <Route path="/search/:query" render={(props) => <SearchResults {...props} sort='' query={props.match.params.query} />} />
   </ResponsiveContainer>
 )
 

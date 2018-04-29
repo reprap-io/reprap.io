@@ -12,7 +12,7 @@ class SearchResult extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			stl_files: [] //a list of stl files we find in a repository
+			stl_files: [], //a list of stl files we find in a repository
 		};
 	}
 
@@ -61,8 +61,7 @@ class SearchResult extends Component {
     <Container>
       <Item.Group divided>
         <Item>
-	    <Item.Image size={ 200 }>
-	   { this.state.stl_files[0] }
+	    <Item.Image size='small' alt={ this.props.name + " needs a picture.png file to display!" }  onError={(e)=>{e.target.src="https://cdn.thingiverse.com/renders/62/ab/d7/e3/ea/1_3D-printed_3DBenchy_by_Creative-Tools.com_preview_featured.JPG"}} src={ this.props.picture }>
 	    </Item.Image>
 	   {/*<Item.Image src='/assets/images/wireframe/image.png' /> */}
           <Item.Content verticalAlign='middle'>
@@ -86,6 +85,7 @@ class SearchResult extends Component {
 						<PrimaryDropdown />
 	    { /* <Label>Limited</Label> */ }
             </Item.Extra>
+
           </Item.Content>
         </Item>
       </Item.Group>

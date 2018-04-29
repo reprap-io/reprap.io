@@ -35,6 +35,9 @@ class SearchResults extends Component {
 	.then( json => { 
 		let results = json.items.map( (search_result) => {
 			console.log("json", json)
+			let picture = "https://raw.githubusercontent.com/" + search_result.full_name + "/master/picture.png"
+			let nolicense = "NO LICENSE FOUND"
+			let license =  search_result.license ? search_result.license : ''
 			return( 
 							<SearchResult 
 
@@ -46,10 +49,10 @@ class SearchResults extends Component {
 								owner={ search_result.owner.login }
 								trees_url={ search_result.trees_url }
 								stars = { search_result.stargazers_count }
-								license = { search_result.license }
+								license = { license }
 								created_at = { search_result.created_at }
 								updated_at  = { search_result.updated_at }
-							
+								picture = { picture }
 							/>
 			)
 		})
@@ -57,7 +60,6 @@ class SearchResults extends Component {
 		this.setState({results : results})
 		this.setState({loading: false})
 
-		console.log("QUERY:   " + this.props.match.params.query)
 		});
 	}
 
@@ -67,10 +69,11 @@ class SearchResults extends Component {
 		this.searchreprapio(this.props.query, this.props.sort)
 	}
 
+	//this is needed for the search results to render after a new path is pushed onto the history
 	componentWillReceiveProps(nextProps) {
 	    this.searchreprapio(nextProps.match.params.query, '');
-		console.log("NEXTPROO: " + nextProps.match.params.query)
 	  }
+	 
 
 	render() {
 		return (
@@ -78,6 +81,7 @@ class SearchResults extends Component {
 				<Divider hidden />
 					{ this.state.results }
 					{ this.state.loading ? <LoadingMessage /> : null }
+					{ /* this.state.results == false && !this.state.loading ? "No Results" : null */ }
 			</div>
 		);
 	}
