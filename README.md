@@ -41,6 +41,10 @@ __Specification for 'reprap.io' file:__
 __Specification for 'reprap.io' 3D object GitHub repository:__
 
   *A repository containing an object to be displayed by reprap.io
+
+  Path to picture for display on search results
+  Thingiverse link
+  Alternative name to display (if different than repository name)
   
   *Recommended files/folders structure:
   
